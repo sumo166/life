@@ -1,0 +1,380 @@
+/* 引入独特字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS变量定义 - 严格遵循SKILL.md设计原则 */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --past-color: #2c3e50;
+    --present-color: #3498db;
+    --future-color: #ecf0f1;
+    --bg-gradient: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+    --text-primary: #ecf0f1;
+    --text-secondary: #bdc3c7;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+    --grid-gap: 2px;
+    --grid-padding: 1rem;
+}
+
+/* 基础样式 */
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 头部样式 */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--secondary-color), #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* 介绍部分样式 */
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.intro p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+/* 输入区域样式 */
+.input-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.input-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+#birthday-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#birthday {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 2px solid rgba(52, 152, 219, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+#birthday:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 网格区域样式 */
+.grid-section {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    gap: var(--grid-gap);
+    width: 80vw;
+    height: 80vw;
+    max-width: 80vh;
+    max-height: 80vh;
+    margin: 0 auto 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--grid-padding);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.grid-cell {
+    background-color: var(--future-color);
+    border-radius: 3px;
+    transition: var(--transition);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.grid-cell:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.grid-cell.past {
+    background-color: var(--past-color);
+    opacity: 0.9;
+}
+
+.grid-cell.present {
+    background-color: #3498db; /* 确保是发光的蓝色 */
+    animation: pulse 2s ease-in-out infinite;
+    opacity: 1;
+}
+
+/* 增强的脉冲动画，确保当前时间格子明显发光 */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.7), 0 0 20px rgba(52, 152, 219, 0.5);
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px rgba(52, 152, 219, 1), 0 0 40px rgba(52, 152, 219, 0.8), 0 0 60px rgba(52, 152, 219, 0.5);
+    }
+}
+
+/* 全屏模式样式 */
+body.fullscreen {
+    overflow: hidden;
+    background: var(--bg-gradient);
+}
+
+body.fullscreen .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+}
+
+body.fullscreen header,
+body.fullscreen .intro,
+body.fullscreen .input-section,
+body.fullscreen .reflection {
+    display: none;
+}
+
+body.fullscreen .grid-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+body.fullscreen .grid-container {
+    width: 80vw;
+    height: 80vw;
+    max-width: 80vh;
+    max-height: 80vh;
+    margin: 0;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+body.fullscreen .legend {
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* 返回按钮样式 */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 图例样式 */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.legend-color.past {
+    background-color: var(--past-color);
+}
+
+.legend-color.present {
+    background-color: var(--present-color);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.legend-color.future {
+    background-color: var(--future-color);
+}
+
+/* 感悟部分样式 */
+.reflection {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.reflection h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.reflection p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .grid-container {
+        max-width: 400px;
+        gap: 1px;
+        padding: 0.5rem;
+    }
+    
+    #birthday-form {
+        flex-direction: column;
+    }
+    
+    #birthday,
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .legend {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .grid-container {
+        max-width: 300px;
+    }
+    
+    .input-section,
+    .reflection {
+        padding: 1.5rem;
+    }
+}

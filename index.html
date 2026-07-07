@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>900 Grids - 看见时间的形状</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>900 Grids</h1>
+            <p>看见时间的形状，过好每一个当下</p>
+        </header>
+
+        <section class="intro">
+            <p>如果把你的一生画在一张A4纸上，它会是什么样子？</p>
+            <p>30行30列，共900个格子，每个格子代表一个月，这几乎就是我们全部的人生。</p>
+        </section>
+
+        <section class="input-section">
+            <h2>输入你的生日</h2>
+            <form id="birthday-form">
+                <input type="date" id="birthday" required>
+                <button type="submit">查看我的人生格子</button>
+            </form>
+        </section>
+
+        <section class="grid-section">
+            <div class="grid-container" id="grid-container">
+                <!-- 30x30网格将通过JavaScript生成 -->
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color past"></span>
+                    <span>已过去的时光</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color present"></span>
+                    <span>当下</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color future"></span>
+                    <span>未来</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection">
+            <h2>时光感悟</h2>
+            <p>当你看见时间的形状，不再是为了制造紧迫感，而是让你更客观地看到人生的全貌。</p>
+            <p>温柔地提醒你：与其担忧未来，不如过好那个发光的蓝色格子。</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
